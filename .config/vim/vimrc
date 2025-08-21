@@ -1,0 +1,53 @@
+set runtimepath+=~/.config/vim
+set viminfofile=~/.config/vim/viminfo
+syntax on
+filetype plugin on
+set encoding=UTF-8
+set tabstop=4
+set noexpandtab
+colorscheme molokai
+
+
+call plug#begin('~/.config/vim/plugins')
+
+	Plug 'kaarmu/typst.vim'
+	Plug 'itchyny/lightline.vim'
+	Plug 'dmerejkowsky/vim-ale'
+	Plug 'joshdick/onedark.vim'
+	Plug 'ryanoasis/vim-devicons'
+call plug#end()
+
+set laststatus=2
+set showtabline=2
+let g:lightline = { 'colorscheme': 'powerline' }
+let g:lightline.active = {
+    \ 'left': [ [ 'mode', 'paste' ],
+    \           [ 'readonly', 'filename', 'modified' ] ],
+    \ 'right': [ [ 'lineinfo' ],
+    \            [ 'percent' ],
+    \            [ 'fileformat', 'fileencoding', 'filetype' ] ] }
+let g:lightline.inactive = {
+    \ 'left': [ [ 'filename' ] ],
+    \ 'right': [ [ 'lineinfo' ],
+    \            [ 'percent' ] ] }
+let g:lightline.tabline = {
+    \ 'left': [ [ 'tabs' ] ],
+    \ 'right': [ [ 'close' ] ] }
+
+
+" Enable autocompletion
+set completeopt=menu,menuone,noselect
+
+let g:typst_pdf_viewer='okular'
+
+" indent with one tab only
+set cino=(0
+set shiftwidth=4
+
+let g:ale_linters = {
+	\ 'csh': ['shell'],
+	\ 'c': ['gcc'],
+	\ 'typ': ['typst-lsp'],
+	\ 'typst':['typst-lsp']
+	\ 
+\}
